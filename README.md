@@ -11,7 +11,7 @@ It supports:
 
 ---
 
-<!-- ## 📦 Installation
+## 📦 Installation
 
 Clone the repo and install locally:
 
@@ -20,14 +20,7 @@ git clone https://github.com/gcharalampous/pyOVNA.git
 cd pyOVNA
 pip install .
 ```
-
-Or with editable mode (useful for development):
-
-```bash
-pip install -e .
-```
-
---- -->
+---
 
 ## 🧪 Requirements
 
@@ -47,17 +40,18 @@ pip install -e .
 pyOVNA/
 ├── examples
 │   ├── data
-│   └── propagation_loss.ipynb
+│   ├── propagation_loss.ipynb
+│   ├── resonator_transmission_analysis.ipynb
+│   └── transmission.ipynb
 ├── LICENSE
 ├── pyOVNA
 │   ├── filters.py
 │   ├── fitting.py
 │   ├── __init__.py
 │   ├── io.py
-│   └── processing.py
+│   ├── processing.py
 ├── pyproject.toml
-├── README.md
-└── tests
+└── README.md
 ```
 
 ---
@@ -70,8 +64,8 @@ Inside a notebook:
 from pyOVNA.io import load_ovna
 from pyOVNA.processing import calculate_loss
 
-data = load_ovna('examples/data/R1C2S1_spiral_W1p0_L3000_R50.OVNA4')
-loss = calculate_loss(data)
+data = read_ovna_file('examples/data/R1C2S1_spiral_W1p0_L3000_R50.OVNA4')
+avg_loss = fit_spectrum_peaks(distance_points=distance_points, raw_spectrum=data, labels=labels)
 ```
 
 See `examples/propagation_loss.ipynb` for a complete walkthrough.
